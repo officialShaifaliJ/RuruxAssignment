@@ -2,11 +2,12 @@ const express = require("express");
 const cors = require('cors');
 const { connection } = require("./db");
 const routes = require("./route");
+const { StudentModel } = require("./student");
 const app = express();
 
 app.use(cors()); 
 app.use(express.json());
-app.use('/ruruxapi', routes);
+// app.use('/ruruxapi', routes);
 
 // app.post('/admin/login', async (req, res) => {
 //   const { username, password } = req.body;
@@ -22,30 +23,60 @@ app.use('/ruruxapi', routes);
 //   }
 // });
 
-// app.get("/students", async (req, res) => {
-// try {
-//   const students = await StudentModel.find();
-//   res.send(students);
-// } catch (err) {
-//   res.status(500).send({ message: err.message });
-// }
-// });
 
-// app.post("/students", async (req, res) => {
-// const student = new StudentModel({
-//   username: req.body.username,
-//   password: req.body.password,
-//   enrollmentYear: req.body.enrollmentYear,
-//   field: req.body.field,
-// });
+app.post("/student/register", async (req, res) => {
+const student = new StudentModel({
+  username: req.body.username,
+  password: req.body.password,
+});
 
-// try {
-//   const newStudent = await student.save();
-//   res.status(201).send(newStudent);
-// } catch (err) {
-//   res.status(400).send({ message: err.message });
-// }
-// });
+try {
+  const existingStudent = await StudentModel.findOne({username:req.body.username});
+  if(existingStudent){
+    return res.status(400).send({message:"Username already exist"})
+  }
+  const newStudent = await student.save();
+  res.status(201).send(newStudent);
+} catch (err) {
+  res.status(400).send({ message: err.message });
+}
+});
+
+
+
+app.post("/student/login",async(req,res)=>{
+  try{
+
+  }
+  catch(err){
+    res.status(400).send({'message':err})
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, async () => {
