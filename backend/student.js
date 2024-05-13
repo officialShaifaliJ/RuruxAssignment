@@ -6,5 +6,5 @@ const studentSchema = new mongoose.Schema({
     enrollmentYear: Number,
     field: String,
 });
-
-module.exports = mongoose.model('Student', studentSchema);
+const StudentModel =mongoose.model('Student', studentSchema);
+module.exports = {StudentModel};

@@ -1,6 +1,6 @@
 const express = require("express");
 const routes = express.Router();
-const Student = require("./student");
+const StudentModel = require("./student");
 
 routes.post('/admin/login', async (req, res) => {
     const { username, password } = req.body;
@@ -13,7 +13,7 @@ routes.post('/admin/login', async (req, res) => {
 
 routes.get("/students", async (req, res) => {
   try {
-    const students = await Student.find();
+    const students = await StudentModel.find();
     res.send(students);
   } catch (err) {
     res.status(500).send({ message: err.message });
@@ -21,7 +21,7 @@ routes.get("/students", async (req, res) => {
 });
 
 routes.post("/students", async (req, res) => {
-  const student = new Student({
+  const student = new StudentModel({
     username: req.body.username,
     password: req.body.password,
     enrollmentYear: req.body.enrollmentYear,
