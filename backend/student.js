@@ -4,7 +4,7 @@ const studentSchema = new mongoose.Schema({
   username: String,
   password: String,
   enrollmentYear: Number,
-  field: String,
+  field: [String],
   subject: [String],
   marks: [
     {
