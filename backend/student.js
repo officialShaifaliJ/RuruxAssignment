@@ -19,7 +19,7 @@ const studentSchema = new mongoose.Schema({
     {
       subject: String,
       marksobtained: Number,
-      feild: String,
+      field: String,
     },
   ],
 });

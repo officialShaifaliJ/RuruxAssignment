@@ -27,7 +27,7 @@ const baseUrl = process.env.url || 'http://localhost:8080';
       );
       console.log(res);
       fetchData();
-      setStudents(response.data);
+      setStudents(res.data);
     } catch (error) {
       console.error("Error deleting student:", error);
     }
