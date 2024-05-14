@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Input } from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
+import axios from "axios";
 
 function StudentLogin() {
   const [username, setUsername] = useState("");
@@ -22,6 +23,19 @@ function StudentLogin() {
           setPassword(e.target.value);
         }}
       />
+      <Button onClick={async () => {
+          try {
+            const res = await axios.post("http://localhost:8080/student/login", {
+              username,
+              password,
+            });
+            console.log(res.data,"reesponse");
+            setUsername("")
+            setPassword("")
+          } catch (error) {
+            console.log("Error:", error);
+          }
+        }}>Submit</Button>
     </>
   );
 }
