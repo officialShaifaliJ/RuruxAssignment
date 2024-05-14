@@ -153,7 +153,7 @@ app.patch("/removeMarks", async (req, res) => {
 
     if (user) {
       const markIndexToRemove = user.marks.findIndex(
-        (mark) => mark.subject === subject || mark.subject === field
+        (mark) => mark.subject === subject
       );
 
       if (markIndexToRemove !== -1) {
