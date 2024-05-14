@@ -26,8 +26,8 @@ function StudentProfile({ studentId }) {
   return (
     <Box>
       <Container>
-        <Text>Name: {studentData.name}</Text>
-        <Text>Enrollment Year: {studentData.enrollmentYear}</Text>
+        <Text color='blue'>Name: {studentData.username}</Text>
+        <Text color='blue'>Enrollment Year: {studentData.enrollmentYear}</Text>
         <Text color='blue'>
           Field: {studentData.field.map((field, index) => (
             <span key={index}>{index !== 0 && ', '}{field}</span>
