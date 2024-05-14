@@ -19,3 +19,7 @@
 ### 5 DELETE /student/:studentId: Delete a student by ID.
 ### 6 POST /addstream: Add a stream/field for a student.
 ### 7 PATCH /removestream: Remove a stream/field for a student.
+
+
+ frontend : https://frontend-zeta-opal-51.vercel.app/
+ backend : https://ruruxbackend.onrender.com
