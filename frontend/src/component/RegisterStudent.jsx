@@ -6,6 +6,7 @@ function RegisterStudent() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [enrollmentYear,setenrollmentYear] = useState("")
+const baseUrl = process.env.url || 'http://localhost:8080';
    
     return (
       <> 
@@ -33,7 +34,7 @@ function RegisterStudent() {
         />
         <Button  onClick={async () => {
           try {
-            const res = await axios.post("http://localhost:8080/student/register", {
+            const res = await axios.post(`${baseUrl}/student/register`, {
               username,
               password,
               enrollmentYear

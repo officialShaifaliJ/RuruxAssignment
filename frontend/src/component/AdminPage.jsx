@@ -5,11 +5,11 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 function AdminPage() {
   const [students, setStudents] = useState([]);
-
+const baseUrl = process.env.url || 'http://localhost:8080';
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/allstudents/list"
+        `${baseUrl}/allstudents/list`
       );
       setStudents(response.data);
     } catch (error) {
@@ -23,7 +23,7 @@ function AdminPage() {
   const handleDelete = async (studentId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8080/student/${studentId}`
+        `${baseUrl}/student/${studentId}`
       );
       console.log(res);
       fetchData();

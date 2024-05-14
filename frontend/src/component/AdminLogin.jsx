@@ -8,6 +8,7 @@ function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const baseUrl = process.env.url || 'http://localhost:8080';
 
   // const response = axios.post("http://localhost:8080/admin/login", {
   //   username,
@@ -42,7 +43,7 @@ function AdminLogin() {
       <Button
         onClick={async () => {
           try {
-            const res = await axios.post("http://localhost:8080/admin/login", {
+            const res = await axios.post(`${baseUrl}/admin/login`, {
               username,
               password,
             });
