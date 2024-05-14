@@ -23,6 +23,7 @@ app.post("/admin/login", async (req, res) => {
 app.post("/student/register", async (req, res) => {
   const student = new StudentModel({
     username: req.body.username,
+    enrollmentYear:req.body.enrollmentYear,
     password: req.body.password,
   });
 
@@ -42,13 +43,11 @@ app.post("/student/register", async (req, res) => {
 
 app.post("/student/login", async (req, res) => {
   const { username, password } = req.body;
+  console.log("---------------------------------------->",username,password)
   try {
-    const existingStudent = await StudentModel.findOne({ username, password });
-    if (existingStudent) {
-      res.json({ message: "Login successful", id: student._id, username });
-    } else {
-      res.status(401).json({ message: "Invalid credentials" });
-    }
+    const student = await StudentModel.findOne({ username, password });
+    res.json({ message: "Login successful", id: student._id, username ,student});
+    
   } catch (err) {
     res.status(400).send({ message: err.message });
   }
@@ -58,6 +57,20 @@ app.get("/allstudents/list", async (req, res) => {
   try {
     const student = await StudentModel.find();
     res.status(200).send(student);
+  } catch (err) {
+    res.status(400).send({ message: err.message });
+  }
+});
+
+app.delete("/student/:studentId", async (req, res) => {
+  const {studentId} = req.params;
+  try {
+    const student = await StudentModel.findByIdAndDelete(studentId);
+    if (!student) {
+      return res.status(404).send({ message: "Student not found" });
+    }
+    const student1= StudentModel.find()
+    res.status(200).send({ message: "Student deleted successfully", student1 });
   } catch (err) {
     res.status(400).send({ message: err.message });
   }
