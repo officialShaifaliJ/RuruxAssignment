@@ -179,7 +179,7 @@ app.patch("/removestream", async (req, res) => {
   try {
     const user = await StudentModel.findOne({ username });
     if (user) {
-      user.field.remove(stream);
+      user.field.splice(stream,1);
       await user.save();
       res.status(200).send(user);
     } else {

@@ -6,7 +6,8 @@ function RegisterStudent() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [enrollmentYear,setenrollmentYear] = useState("")
-const baseUrl = process.env.url || 'http://localhost:8080';
+  const baseUrl = 'https://ruruxbackend.onrender.com/';
+  // const baseUrl = process.env.url || 'http://localhost:8080';
    
     return (
       <> 

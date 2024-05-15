@@ -5,7 +5,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 function AdminPage() {
   const [students, setStudents] = useState([]);
-const baseUrl = process.env.url || 'http://localhost:8080';
+  const baseUrl = 'https://ruruxbackend.onrender.com/';
+  // const baseUrl = process.env.url || 'http://localhost:8080';
   const fetchData = async () => {
     try {
       const response = await axios.get(

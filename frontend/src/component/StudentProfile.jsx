@@ -3,7 +3,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 function StudentProfile({ studentId }) {
-  const baseUrl = process.env.url || 'http://localhost:8080';
+  const baseUrl = 'https://ruruxbackend.onrender.com/';
+  // const baseUrl = process.env.url || 'http://localhost:8080';
   const [studentData, setStudentData] = useState(null);
 
   useEffect(() => {
