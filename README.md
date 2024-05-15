@@ -23,3 +23,7 @@
 
  frontend : https://frontend-zeta-opal-51.vercel.app/
  backend : https://ruruxbackend.onrender.com
+
+ ### admin
+  username = admin
+  password = admin123
